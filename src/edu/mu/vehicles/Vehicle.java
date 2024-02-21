@@ -30,6 +30,22 @@ public class Vehicle {
 		this.gasTankCapacity = gasTankCapacity;
 		this.startType = startType;
 	}
+	
+	public Vehicle(Vehicle copy) {
+		
+		this.brand = copy.brand;
+		this.make = copy.make;
+		this.modelYear = copy.modelYear;
+		this.price = copy.price;
+		this.color = copy.color;
+		this.fueltype = copy.fueltype;
+		this.mileage = copy.mileage;
+		this.mass = copy.mass;
+		this.cylinders = copy.cylinders;
+		this.gasTankCapacity = copy.gasTankCapacity;
+		this.startType = copy.startType;
+		
+	}
 
 
 	public String getBrand() {
