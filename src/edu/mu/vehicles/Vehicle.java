@@ -1,7 +1,8 @@
 package edu.mu.vehicles;
 
-public class Vehicle {
+public abstract class Vehicle {
 	
+	protected String type;
 	protected String brand;
 	protected String make;
 	protected long modelYear;
@@ -15,9 +16,10 @@ public class Vehicle {
 	protected StartMechanism startType;
 	
 	
-	public Vehicle(String brand, String make, long modelYear, Double price, VehicleColor color, FuelType fueltype,
+	public Vehicle(String type, String brand, String make, long modelYear, Double price, VehicleColor color, FuelType fueltype,
 			Double mileage, double mass, int cylinders, Double gasTankCapacity, StartMechanism startType) {
 		super();
+		this.type = type;
 		this.brand = brand;
 		this.make = make;
 		this.modelYear = modelYear;
@@ -33,6 +35,7 @@ public class Vehicle {
 	
 	public Vehicle(Vehicle copy) {
 		
+		this.type = copy.type;
 		this.brand = copy.brand;
 		this.make = copy.make;
 		this.modelYear = copy.modelYear;
@@ -48,6 +51,15 @@ public class Vehicle {
 	}
 
 
+	public String getType() {
+		return type;
+		
+	}
+	
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 	public String getBrand() {
 		return brand;
 	}
@@ -157,10 +169,15 @@ public class Vehicle {
 		this.startType = startType;
 	}
 
-
+	public abstract double calculateMaintenanceCost(double distance);
+	public abstract double calculateFuelEfficiency(double distance, double fuelPrice);
+	
+	
+	
+	
 	@Override
 	public String toString() {
-		return "brand=" + brand + ", make=" + make + ", modelYear=" + modelYear + ", price=" + price
+		return "type= " + type + ", brand=" + brand + ", make=" + make + ", modelYear=" + modelYear + ", price=" + price
 				+ ", color=" + color + ", fueltype=" + fueltype + ", mileage=" + mileage + ", mass=" + mass
 				+ ", cylinders=" + cylinders + ", gasTankCapacity=" + gasTankCapacity + ", startType=" + startType;
 	}
