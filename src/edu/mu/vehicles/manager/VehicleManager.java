@@ -314,6 +314,7 @@ public class VehicleManager {
 				vehicle.clear();
 				vehicle.add(test);
 				highestCost = temp;
+				temp = Double.MIN_VALUE;
 			}
 			
 			if(temp == highestCost)
@@ -353,6 +354,7 @@ public class VehicleManager {
 				vehicle.clear();
 				vehicle.add(test);
 				lowestCost = temp;
+				temp = Double.MAX_VALUE;
 			}
 			
 			if(temp == lowestCost)
@@ -380,20 +382,73 @@ public class VehicleManager {
     
     public ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice)
     {
-		return null;
+    	ArrayList<Vehicle> vehicle = new ArrayList<>();
+    	double highestFuel = Double.MIN_VALUE;
+    	double temp;
     	
+    	for(Vehicle test : vehicleList)
+		{
+			temp = test.calculateFuelEfficiency(distance, fuelPrice);
+			if(temp > highestFuel)
+			{
+				vehicle.clear();
+				vehicle.add(test);
+				highestFuel = temp;
+				temp = Double.MIN_VALUE;
+			}
+			
+			if(temp == highestFuel)
+			{
+				vehicle.add(test);
+			}
+			
+		}
+    	
+    	return vehicle;
     }
+    	
     
     public ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice)
     {
-		return null;
+    	ArrayList<Vehicle> vehicle = new ArrayList<>();
+    	double lowestFuel = Double.MAX_VALUE;
+    	double temp;
+    	
+    	for(Vehicle test : vehicleList)
+		{
+			temp = test.calculateFuelEfficiency(distance, fuelPrice);
+			if(temp < lowestFuel)
+			{
+				vehicle.clear();
+				vehicle.add(test);
+				lowestFuel = temp;
+				temp = Double.MAX_VALUE;
+			}
+			
+			if(temp == lowestFuel)
+			{
+				vehicle.add(test);
+			}
+			
+		}
+    	
+    	return vehicle;
     	
     }
     
     public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice)
     {
-		return fuelPrice;
-    	
+		double totalFuel = 0;
+		int size = getNumberOfVehichlesByType(SUV.class);
+		
+		for(Vehicle test : vehicleList)
+		{
+			if(isVehicleType(test, SUV.class))
+			{
+				totalFuel = totalFuel + test.calculateFuelEfficiency(distance, fuelPrice);
+			}
+		}		
+		return (totalFuel / size);
     }
     
     
