@@ -1,5 +1,6 @@
 package edu.mu.vehicles.manager;
 import java.io.BufferedReader;
+import java.util.Random;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -270,5 +271,130 @@ public class VehicleManager {
 		}
     	
     }
+    
+    
+    private boolean isVehicleType(Vehicle v, Class<?> clazz)
+    {
+		if(clazz.isInstance(v))
+		{
+			return true;
+		}
+		else
+		{
+    	
+    	return false;
+		}	
+    }
+    
+    public int getNumberOfVehichlesByType(Class<?> clazz)
+    {
+		int count;
+		count = 0;
+		for(Vehicle test : vehicleList)
+		{
+			if(isVehicleType(test, clazz))
+			{
+				count++;
+			}
+		}
+		return count;
+    	
+    }
+    
+    public Vehicle getVehicleWithHighestMaintenanceCost(double distance)
+    {
+		List<Vehicle> vehicle = new ArrayList<>(); 
+		double highestCost = 0.0;
+		double temp;
+		for(Vehicle test : vehicleList)
+		{
+			temp = test.calculateMaintenanceCost(distance);
+			if(temp > highestCost)
+			{
+				vehicle.clear();
+				vehicle.add(test);
+				highestCost = temp;
+			}
+			
+			if(temp == highestCost)
+			{
+				vehicle.add(test);
+			}
+				
+		}
+		
+		int size = vehicle.size();
+    				
+    	if(size > 1)
+    	{
+    		Random rand = new Random();
+    		Vehicle randVehicle = vehicle.get(rand.nextInt(vehicle.size()));
+    		return randVehicle;
+    		
+    	}
+    	else
+    	{
+    		return vehicle.get(0);
+    	}
+    	
+    	
+    }
+    
+    public Vehicle getVehicleWithLowestMaintenanceCost(double distance)
+    {
+    	List<Vehicle> vehicle = new ArrayList<>(); 
+		double lowestCost = Double.MAX_VALUE;
+		double temp;
+		for(Vehicle test : vehicleList)
+		{
+			temp = test.calculateMaintenanceCost(distance);
+			if(temp < lowestCost)
+			{
+				vehicle.clear();
+				vehicle.add(test);
+				lowestCost = temp;
+			}
+			
+			if(temp == lowestCost)
+			{
+				vehicle.add(test);
+			}
+				
+		}
+		
+		int size = vehicle.size();
+    				
+    	if(size > 1)
+    	{
+    		Random rand = new Random();
+    		Vehicle randVehicle = vehicle.get(rand.nextInt(vehicle.size()));
+    		return randVehicle;
+    		
+    	}
+    	else
+    	{
+    		return vehicle.get(0);
+    	}
+    	
+    }
+    
+    public ArrayList<Vehicle> getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice)
+    {
+		return null;
+    	
+    }
+    
+    public ArrayList<Vehicle> getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice)
+    {
+		return null;
+    	
+    }
+    
+    public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice)
+    {
+		return fuelPrice;
+    	
+    }
+    
     
 }

@@ -1,4 +1,6 @@
 package edu.mu;
+import edu.mu.vehicles.manager.*;
+import edu.mu.vehicles.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -33,7 +35,11 @@ public class Main {
 			}
 	        
 	    }
-				
-	}
+	    
+	    int number = vehicleManager.getNumberOfVehichlesByType(SUV.class);
+	    System.out.println("The number of SUV is" + number);
+	    
+	    
 
+	}
 }
