@@ -92,7 +92,7 @@ public class VehicleManager {
     	        {
     	            double cost = vehicle.calculateMaintenanceCost(distance);
     	            String fuelCost = String.format("%.2f", vehicle.calculateFuelEfficiency(distance, fuel));
-    	            System.out.println("Maintenance Cost: " + cost + ", Fuel Effiency: " + fuelCost + ", Vehicle Start: " + vehicle.getStartType());
+    	            System.out.println(vehicle.getMake()+": Maintenance Cost: " + cost + ", Fuel Effiency: " + fuelCost + ", Vehicle Start: " + vehicle.getStartType());
     	        }
     	        catch (NumberFormatException | ArrayIndexOutOfBoundsException e) 
     	        {
@@ -114,7 +114,7 @@ public class VehicleManager {
     	        {
     	            double cost = vehicle.calculateMaintenanceCost(distance);
     	            String fuelCost = String.format("%.2f", vehicle.calculateFuelEfficiency(distance, fuel));
-    	            System.out.println("Maintenance Cost: " + cost + ", Fuel Effiency: " + fuelCost + ", Vehicle Start: " + vehicle.getStartType());
+    	            System.out.println(vehicle.getMake()+": Maintenance Cost: " + cost + ", Fuel Effiency: " + fuelCost + ", Vehicle Start: " + vehicle.getStartType());
     	        }
     	        catch (NumberFormatException | ArrayIndexOutOfBoundsException e) 
     	        {
@@ -135,7 +135,7 @@ public class VehicleManager {
     	        {
     	            double cost = vehicle.calculateMaintenanceCost(distance);
     	            String fuelCost = String.format("%.2f", vehicle.calculateFuelEfficiency(distance, fuel));
-    	            System.out.println("Maintenance Cost: " + cost + ", Fuel Effiency: " + fuelCost + ", Vehicle Start: " + vehicle.getStartType());
+    	            System.out.println(vehicle.getMake()+": Maintenance Cost: " + cost + ", Fuel Effiency: " + fuelCost + ", Vehicle Start: " + vehicle.getStartType());
     	        }
     	        catch (NumberFormatException | ArrayIndexOutOfBoundsException e) 
     	        {
@@ -156,7 +156,7 @@ public class VehicleManager {
     	        {
     	            double cost = vehicle.calculateMaintenanceCost(distance);
     	            String fuelCost = String.format("%.2f", vehicle.calculateFuelEfficiency(distance, fuel));
-    	            System.out.println("Maintenance Cost: " + cost + ", Fuel Effiency: " + fuelCost + ", Vehicle Start: " + vehicle.getStartType());
+    	            System.out.println(vehicle.getMake()+": Maintenance Cost: " + cost + ", Fuel Effiency: " + fuelCost + ", Vehicle Start: " + vehicle.getStartType());
     	        }
     	        catch (NumberFormatException | ArrayIndexOutOfBoundsException e) 
     	        {
@@ -177,7 +177,7 @@ public class VehicleManager {
                 {
                     double cost = vehicle.calculateMaintenanceCost(distance);
                     String fuelEfficiency = String.format("%.2f", vehicle.calculateFuelEfficiency(distance, fuel));
-                    System.out.println("Maintenance Cost: " + cost + ", Fuel Efficiency: " + fuelEfficiency + ", Vehicle Start: " + vehicle.getStartType());
+                    System.out.println(vehicle.getMake()+": Maintenance Cost: " + cost + ", Fuel Efficiency: " + fuelEfficiency + ", Vehicle Start: " + vehicle.getStartType());
                     vehicleFound = true;
                 } 
                 catch (Exception e) 
@@ -209,7 +209,7 @@ public class VehicleManager {
     		{
     			double cost = vehicle.calculateMaintenanceCost(distance);
     	        String fuelCost = String.format("%.2f", vehicle.calculateFuelEfficiency(distance, fuel));
-    	        System.out.println("Maintenance Cost: " + cost + ", Fuel Effiency: " + fuelCost + ", Vehicle Start: " + vehicle.getStartType());
+    	        System.out.println(vehicle.getMake()+": Maintenance Cost: " + cost + ", Fuel Effiency: " + fuelCost + ", Vehicle Start: " + vehicle.getStartType());
     	    }
     		catch (NumberFormatException | ArrayIndexOutOfBoundsException e) 
     		{
@@ -245,7 +245,7 @@ public class VehicleManager {
     	return false;
     }
     
-    public boolean saveBehicleList() {
+    public boolean saveVehicleList() {
     	
     	try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(vehicleFilePath));

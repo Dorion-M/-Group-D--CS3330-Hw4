@@ -15,51 +15,62 @@ public class Main {
 		
 		VehicleManager vehicleManager = VehicleManager.getInstance();
 		
-	    if (vehicleManager.initializeVehicle()) {
+	    if (vehicleManager.initializeVehicle()) 
+	    {
 	        List<Vehicle> vehicleList = vehicleManager.vehicleList;
-//	        for (Vehicle vehicle : vehicleList) {
-//	            System.out.println(vehicle);
-//	        }
-//	        for (Vehicle vehicle : vehicleList) {
-//	            System.out.println(vehicle);
-//	        }
+            System.out.println("Vehicles Read from file: ");
 	        
-	        try {
-	        	vehicleManager.displayAllCarInformation(2000000, 10);
-		        vehicleManager.displayAllTruckInformation(2000000, 10);
-		        vehicleManager.displayAllSUVInformation(2000000, 10);
-				vehicleManager.displayAllMotorBikeInformation(2000000, 10);
-				vehicleManager.displayAllVehicleInformation(0, 0);
-			} catch (IOException e) {
+	        for (Vehicle vehicle : vehicleList) 
+	        {
+	        	System.out.println(vehicle);
+	        }
+	        	
+			try 
+			{
+			    //All
+				System.out.println("\nThere are " + vehicleManager.getNumberOfVehichlesByType(Vehicle.class) + " vehicles.");
+				System.out.println("All Vehicle Information (At distance=300,fuel=3.25): ");
+				vehicleManager.displayAllVehicleInformation(300, 3.25);
+				
+				//Cars
+				System.out.println("\nThere are " + vehicleManager.getNumberOfVehichlesByType(Car.class) + " Cars.");
+				System.out.println("All Car Information (At distance=300,fuel=3.25): ");
+				vehicleManager.displayAllCarInformation(300, 3.25);
+				
+				//Trucks
+				System.out.println("\nThere are " + vehicleManager.getNumberOfVehichlesByType(Truck.class) + " Trucks.");
+				System.out.println("All Truck Information (At distance=300,fuel=3.25): ");
+				vehicleManager.displayAllTruckInformation(300, 3.25);
+				
+				//SUVs
+				System.out.println("\nThere are " + vehicleManager.getNumberOfVehichlesByType(SUV.class) + " SUVs.");
+				System.out.println("All SUV Information (At distance=300,fuel=3.25): ");
+				vehicleManager.displayAllSUVInformation(300, 3.25);
+				double fueling = vehicleManager.getAverageFuelEfficiencyOfSUVs(300, 3.25);
+			    System.out.println("\nThe average SUV fuel efficiency is: " + fueling);
+				
+			    //MotorBikes
+			    System.out.println("\nThere are " + vehicleManager.getNumberOfVehichlesByType(MotorBike.class) + " Motorbikes.");
+				System.out.println("All MotorBike Information (At distance=300,fuel=3.25): ");
+				vehicleManager.displayAllMotorBikeInformation(300, 3.25);
+				
+				//Lowest Maintenance
+				Vehicle test = vehicleManager.getVehicleWithLowestMaintenanceCost(300);
+			    System.out.println("\nThe vehicle with the lowest maintenance cost is: " + test.getMake());
+			    
+			    //Highest Fuel Efficiency
+			    System.out.println("\nHighestFuelEfficiency:");
+			    System.out.println(vehicleManager.getVehicleWithHighestFuelEfficiency(300, 3.25));	    
+			    
+			    //Lowest Fuel Efficiency
+			    System.out.println("\nTesting LowestFuelEfficiency");
+			    System.out.println(vehicleManager.getVehicleWithLowestFuelEfficiency(300, 3.25));
+			} 
+			catch (IOException e) 
+			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-	        
-	    }
-	    
-	    int number = vehicleManager.getNumberOfVehichlesByType(SUV.class);
-	    System.out.println("The number of SUVs is" + number);
-	    
-	    Vehicle test = vehicleManager.getVehicleWithLowestMaintenanceCost(300);
-	    System.out.println("The name of the vehicle is" + test.getMake());
-	    
-	    System.out.println("Testing HightFuelEfficiency\n");
-	    ArrayList<Vehicle> fuel = vehicleManager.getVehicleWithHighestFuelEfficiency(300, 3.25);
-	    for (Vehicle element : fuel) {
-	        System.out.println(element);
-	    }
-	    
-	    System.out.println("Testing LowestFuelEfficiency\n");
-	    ArrayList<Vehicle> fuels = vehicleManager.getVehicleWithLowestFuelEfficiency(300, 3.25);
-	    for (Vehicle element : fuels) {
-	        System.out.println(element);
-	    }
-	    
-	    double fueling = vehicleManager.getAverageFuelEfficiencyOfSUVs(300, 3.25);
-	    System.out.println("The average SUV fuel efficiency is: " + fueling);
-
-	    
-	    
-
+			}	
+	    }    
 	}
 }
